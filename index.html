@@ -987,7 +987,7 @@
                 <p>Watch our educational video series on natural farming</p>
             </div>
             <div class="episodes-grid">
-                <div class="episode-card">
+                <div class="episode-card" onclick="window.open('https://www.youtube.com/watch?v=4K93a_1gCyM', '_blank')">
                     <div class="episode-thumbnail">
                         <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=400" alt="Episode 1">
                         <div class="play-button">
@@ -1199,7 +1199,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>info@isap-farming.org</p>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4cdcac2cbe4cdd7c5d489c2c5d6c9cdcac38acbd6c3">[email&#160;protected]</a></p>
                         </div>
                     </div>
                     <div class="social-links">
@@ -1258,7 +1258,7 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><i class="fas fa-phone"></i> +1 (XXX) XXX-XXXX</li>
-                        <li><i class="fas fa-envelope"></i> info@isap-farming.org</li>
+                        <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fc95929a93bc958f9d8cd19a9d8e9195929bd2938e9b">[email&#160;protected]</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> Your Location</li>
                     </ul>
                 </div>
@@ -1269,7 +1269,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Navigation Toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
@@ -1336,12 +1336,15 @@
             });
         }
 
-        // Episode Card Click Handler
+        // Episode Card Click Handler (for episodes without specific links)
         document.querySelectorAll('.episode-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const episodeTitle = card.querySelector('h3').textContent;
-                alert(`Playing: ${episodeTitle}\n\nThis would open your video player or redirect to the video page.`);
-            });
+            // Skip Episode 1 as it has its own onclick handler
+            if (!card.hasAttribute('onclick')) {
+                card.addEventListener('click', () => {
+                    const episodeTitle = card.querySelector('h3').textContent;
+                    alert(`Playing: ${episodeTitle}\n\nThis would open your video player or redirect to the video page.`);
+                });
+            }
         });
 
         // Active Navigation Link on Scroll
@@ -1359,19 +1362,4 @@
                 if (navLink) {
                     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                         navLink.style.color = '#2d7a2e';
-                    } else {
-                        navLink.style.color = '#333';
-                    }
-                }
-            });
-        }
-
-        window.addEventListener('scroll', activateNavLink);
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            activateNavLink();
-        });
-    </script>
-</body>
-</html>
+                    } els
